@@ -72,7 +72,7 @@ class DiffSynthSampler:
             "required": {
                 "diffsynth_model": ("DIFFSYNTHMODEL", ),
                 "image": ("IMAGE", ),
-                "frames": ("INT", {"default": 128, "min": 1, "max": 512, "step": 1}),
+                "frames": ("INT", {"default": 128, "min": 1, "max": 128, "step": 1}),
                 "width": ("INT", {"default": 512, "min": 1, "max": 2048, "step": 1}),
                 "height": ("INT", {"default": 512, "min": 1, "max": 2048, "step": 1}),
                 "steps": ("INT", {"default": 25, "min": 1, "max": 512, "step": 1}),
