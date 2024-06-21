@@ -1,0 +1,365 @@
+{
+  "last_node_id": 9,
+  "last_link_id": 16,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "DownloadAndLoadDiffSynthExVideoSVD",
+      "pos": [
+        47,
+        -2
+      ],
+      "size": {
+        "0": 386.8787536621094,
+        "1": 82.6969985961914
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "diffsynth_model",
+          "type": "DIFFSYNTHMODEL",
+          "links": [
+            7
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DownloadAndLoadDiffSynthExVideoSVD"
+      },
+      "widgets_values": [
+        "ECNU-CILab/ExVideo-SVD-128f-v1",
+        "svd_xt_1_1.safetensors"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "ImageResizeKJ",
+      "pos": [
+        311,
+        235
+      ],
+      "size": {
+        "0": 315,
+        "1": 242
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 10
+        },
+        {
+          "name": "get_image_size",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "width_input",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "width_input"
+          }
+        },
+        {
+          "name": "height_input",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "height_input"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            11
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            12
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            13
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageResizeKJ"
+      },
+      "widgets_values": [
+        512,
+        512,
+        "lanczos",
+        false,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        -66,
+        230
+      ],
+      "size": {
+        "0": 314.8787536621094,
+        "1": 403.3636474609375
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            10
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_temp_mkxxn_00010_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "DiffSynthSampler",
+      "pos": [
+        709,
+        199
+      ],
+      "size": {
+        "0": 315,
+        "1": 410
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "diffsynth_model",
+          "type": "DIFFSYNTHMODEL",
+          "link": 7
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 11
+        },
+        {
+          "name": "input_video",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 12,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 13,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            16
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DiffSynthSampler"
+      },
+      "widgets_values": [
+        128,
+        512,
+        512,
+        30,
+        127,
+        30,
+        2,
+        2,
+        1.2,
+        0.02,
+        1,
+        1,
+        "fixed",
+        false
+      ]
+    },
+    {
+      "id": 7,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1094,
+        47
+      ],
+      "size": [
+        483.8788146972656,
+        767.8788146972656
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 16
+        },
+        {
+          "name": "audio",
+          "type": "VHS_AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 24,
+        "loop_count": 0,
+        "filename_prefix": "DiffSynthSVD",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "DiffSynthSVD_00026.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4"
+          }
+        }
+      }
+    }
+  ],
+  "links": [
+    [
+      7,
+      2,
+      0,
+      6,
+      0,
+      "DIFFSYNTHMODEL"
+    ],
+    [
+      10,
+      3,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      11,
+      8,
+      0,
+      6,
+      1,
+      "IMAGE"
+    ],
+    [
+      12,
+      8,
+      1,
+      6,
+      3,
+      "INT"
+    ],
+    [
+      13,
+      8,
+      2,
+      6,
+      4,
+      "INT"
+    ],
+    [
+      16,
+      6,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1,
+      "offset": [
+        290.121249112216,
+        177.63634144176135
+      ]
+    }
+  },
+  "version": 0.4
+}

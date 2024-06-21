@@ -106,13 +106,13 @@ class DiffSynthSampler:
         pipe.to(device)
         torch.manual_seed(seed)
 
-        image = image.permute(0, 3, 1, 2) * 2 - 1
+        input_image = image.clone().permute(0, 3, 1, 2) * 2 - 1
         
         if input_video is not None:
             input_video = input_video.permute(0, 3, 1, 2) * 2 - 1
 
         video = pipe(
-        input_image=image,
+        input_image=input_image,
         num_frames=frames, 
         fps=fps, 
         height=height, 

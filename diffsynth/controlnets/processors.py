@@ -1,10 +1,10 @@
 from typing_extensions import Literal, TypeAlias
 import warnings
-with warnings.catch_warnings():
-    warnings.simplefilter("ignore")
-    from controlnet_aux.processor import (
-        CannyDetector, MidasDetector, HEDdetector, LineartDetector, LineartAnimeDetector, OpenposeDetector
-    )
+# with warnings.catch_warnings():
+#     warnings.simplefilter("ignore")
+#     from controlnet_aux.processor import (
+#         CannyDetector, MidasDetector, HEDdetector, LineartDetector, LineartAnimeDetector, OpenposeDetector
+#     )
 
 
 Processor_id: TypeAlias = Literal[
