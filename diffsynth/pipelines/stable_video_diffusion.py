@@ -69,7 +69,7 @@ class SVDVideoPipeline(torch.nn.Module):
     
 
     def encode_video_with_vae(self, video):
-        video = torch.concat([self.preprocess_image(frame) for frame in video], dim=0)
+        #video = torch.concat([self.preprocess_image(frame) for frame in video], dim=0)
         video = rearrange(video, "T C H W -> 1 C T H W")
         video = video.to(device=self.device, dtype=self.torch_dtype)
         latents = self.vae_encoder.encode_video(video)

@@ -113,6 +113,7 @@ class DiffSynthSampler:
 
         video = pipe(
         input_image=input_image,
+        input_video=input_video,
         num_frames=frames, 
         fps=fps, 
         height=height, 
