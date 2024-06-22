@@ -31,7 +31,7 @@
       },
       "widgets_values": [
         "ECNU-CILab/ExVideo-SVD-128f-v1",
-        "svd_xt_1_1.safetensors"
+        "svd_xt.safetensors"
       ]
     },
     {
